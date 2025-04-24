@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0 0;
+    font-weight: 800;
+    color: #444;
+}
+
+.dice {
+    font-size: 100px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.roll-btn,
+.clear-history-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: fit-content;
+    border: none;
+    outline: none;
+    margin: auto;
+    margin-top: 20px;
+    display: block;
+    background: #0eff9f;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.roll-history {
+    width: 60%;
+    background-color: #4444;
+    margin: 2rem auto;
+    border-radius: 8px;
+    padding: 20px 0 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+}
+
+@media (max-width: 992px) {
+    .roll-history {
+        width: 70%;
+    }
+}
+
+@media (max-width: 678px) {
+    .roll-history {
+        width: 90%;
+    }
+}
+
+.roll-history li {
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+
+}
+
+.roll-history li span {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.clear-history-btn {
+    transform: translatey(-6rem);
+    display: none;
+}
+
+.clear-history-btn.active {
+    display: block;
+}
