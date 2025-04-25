@@ -6,6 +6,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #0b0c2a;
 }
 
 .container {
@@ -49,8 +50,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     font-weight: 900;
-    color: #444;
-    background: #00edfa4a;
+    color: white;
+    background: #e53637;
     width: fit-content;
     padding: 15px 50px;
     border-radius: 12px;
@@ -71,7 +72,7 @@ ul {
 
 ul li {
     overflow: hidden;
-    outline: 2px solid #444;
+    outline: 2px solid #f54a4a;
     border-radius: 16px;
     width: calc(calc(100% - 3rem) / 4);
     height: 200px;
@@ -80,11 +81,17 @@ ul li {
     background-repeat: no-repeat;
 }
 
-ul li .shadow-inside {
-    background: #3636365e;
+ul li .box {
     width: 100%;
     height: 100%;
     padding: 10px 15px;
+    background-color: rgb(11 12 42 / 81%);
+    transform: translateY(13rem);
+    transition: 0.3s;
+}
+
+ul li:hover .box {
+    transform: translateY(0);
 }
 
 @media (max-width: 1200px) {
@@ -105,4 +112,21 @@ ul li .shadow-inside {
     }
 }
 
-ul li a {}
+ul li a {
+    color: #e53637;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    padding: 20px 0;
+}
+
+ul li a:hover {
+    color: #ff1515;
+}
+
+ul li p {
+    text-align: center;
+    color: white;
+}
