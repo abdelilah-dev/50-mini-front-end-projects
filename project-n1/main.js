@@ -18,12 +18,28 @@ window.onload = () => {
 }
 
 rollbtn.addEventListener("click", event => {
+    let diceIcon = document.querySelectorAll(".dice span");
+    diceIcon.forEach((e) => { e.classList.add("roll-animation") });
+    numberOfDices.forEach((e) => { e.disabled = true });
+    let i = 0;
+    let interval = setInterval(() => {
+        i += 100
+        if (diceCount === 1)
+            dice.firstChild.innerHTML = `${Dices[getRandomNum() - 1]}`
+        else {
+            dice.firstChild.innerHTML = `${Dices[getRandomNum() - 1]}`;
+            dice.lastChild.innerHTML = `${Dices[getRandomNum() - 1]}`;
+        }
+        if (i === 1500) clearInterval(interval);
+    }, 100);
     rollingSoundEffect.play();
     rollbtn.disabled = true;
     rollNumber++;
     RollingDice();
     setTimeout(() => {
         rollbtn.disabled = false;
+        diceIcon.forEach((e) => { e.classList.remove("roll-animation") });
+        numberOfDices.forEach((e) => { e.disabled = false });
     }, 1500);
 })
 
@@ -31,6 +47,8 @@ numberOfDices.forEach((ele) => {
     ele.onclick = () => {
         numberOfDices.forEach((e) => e.classList.remove("active"));
         diceCount = +ele.dataset.value;
+        if (ele.dataset.value === '1') dice.innerHTML = `<span>${Dices[Dices.length - 1]}</span>`
+        else dice.innerHTML = `<span>${Dices[Dices.length - 1]}</span><span>${Dices[Dices.length - 1]}</span>`
         ele.classList.add("active");
     }
 })
@@ -43,17 +61,18 @@ clearHistoryBtn.addEventListener("click", event => {
     updateHistory();
 })
 
-
 function RollingDice() {
     let diceface = diceCount === 2 ? [getRandomNum(), getRandomNum()] : [getRandomNum()];
     let rollingData = {
         id: rollNumber,
         faces: diceface,
     }
-    dice.innerHTML = diceCount === 1 ? `${Dices[diceface[0] - 1]}` : `<span>${Dices[diceface[0] - 1]}</span><span>${Dices[diceface[1] - 1]}</span>`;
+    setTimeout(() => {
+        dice.innerHTML = diceCount === 1 ? `<span>${Dices[diceface[0] - 1]}</span>` : `<span>${Dices[diceface[0] - 1]}</span><span>${Dices[diceface[1] - 1]}</span>`;
+        updateHistory();
+    }, 1500);
     rollHistory.push(rollingData);
     updateData();
-    updateHistory();
 }
 
 function updateHistory() {
