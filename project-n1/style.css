@@ -8,22 +8,7 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
-    text-align: center;
-    margin: 40px 0 0;
-    font-weight: 800;
-    color: #444;
-}
-
-.dice {
-    font-size: 100px;
-    margin: auto;
-    text-align: center;
-
-}
-
-.roll-btn,
-.clear-history-btn {
+.custom-button {
     padding: 10px 20px;
     border-radius: 5px;
     width: fit-content;
@@ -38,6 +23,38 @@ h1 {
     font-weight: 600;
     cursor: pointer;
 }
+
+h1 {
+    text-align: center;
+    margin: 40px 0 0;
+    font-weight: 800;
+    color: #444;
+}
+
+.dice {
+    font-size: 100px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.dice-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 10px 0;
+}
+.dice-number button {
+    margin: 0;
+    background-color: #7dd2f9;
+    transition: 0.5s;
+}
+
+.dice-number button.active {
+    background-color: #099de2;
+}
+
 
 .roll-history {
     width: 60%;

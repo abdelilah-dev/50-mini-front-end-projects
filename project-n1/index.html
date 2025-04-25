@@ -13,12 +13,16 @@
 
     <body>
         <h1>Dice Roll Simulator</h1>
-        <div class="dice" id="dice">&#9860;</div>
-        <button type="button" id="roll-btn" class="roll-btn">Roll Dice</button>
+        <div class="dice" id="dice"><span>&#9860;</span></div>
+        <div class="dice-number">
+            <button class="one-dice custom-button active" data-value="1"> 1</button>
+            <button class="two-dices custom-button" data-value="2">2</button>
+        </div>
+        <button type="button " id="roll-btn" class="roll-btn custom-button">Roll Dice</button>
 
         <ul class="roll-history" id="roll-history">
         </ul>
-        <button type="button" class="clear-history-btn">Clear All History</button>
+        <button type="button" class="clear-history-btn custom-button">Clear All History</button>
         <script src="main.js"></script>
     </body>
 
