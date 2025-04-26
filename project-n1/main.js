@@ -8,17 +8,22 @@ let clearHistoryBtn = document.querySelector(".clear-history-btn");
 let Dices = ["&#9856;", "&#9857;", "&#9858;", "&#9859;", "&#9860;", "&#9861;"];
 let [rollHistory, diceCount] = [[], 1];
 let rollNumber = 0;
+let faces = [0, 0, 0, 0, 0, 0];
 
 window.onload = () => {
     if (window.localStorage.rollHistory) {
         rollHistory = JSON.parse(window.localStorage.rollHistory)
-        rollNumber = rollHistory[rollHistory.length - 1].id;
+        rollNumber = rollHistory.length !== 0 ? rollHistory[rollHistory.length - 1].id : 0;
+
     }
+    if (window.localStorage.facesYouFinded) faces = JSON.parse(window.localStorage.facesYouFinded).faces;
+    createChart();
     updateHistory();
 }
 
 rollbtn.addEventListener("click", event => {
     let diceIcon = document.querySelectorAll(".dice span");
+    rollbtn.disabled = true;
     diceIcon.forEach((e) => { e.classList.add("roll-animation") });
     numberOfDices.forEach((e) => { e.disabled = true });
     let i = 0;
@@ -33,7 +38,6 @@ rollbtn.addEventListener("click", event => {
         if (i === 1500) clearInterval(interval);
     }, 100);
     rollingSoundEffect.play();
-    rollbtn.disabled = true;
     rollNumber++;
     RollingDice();
     setTimeout(() => {
@@ -63,6 +67,9 @@ clearHistoryBtn.addEventListener("click", event => {
 
 function RollingDice() {
     let diceface = diceCount === 2 ? [getRandomNum(), getRandomNum()] : [getRandomNum()];
+    diceface.forEach((e) => {
+        faces[e - 1]++;
+    })
     let rollingData = {
         id: rollNumber,
         faces: diceface,
@@ -72,6 +79,7 @@ function RollingDice() {
         updateHistory();
     }, 1500);
     rollHistory.push(rollingData);
+    updateChartData(faces)
     updateData();
 }
 
@@ -95,10 +103,43 @@ function updateHistory() {
 }
 
 function updateData() {
-    window.localStorage.setItem("rollHistory", JSON.stringify(rollHistory))
+    let numOfDiceThrows = faces.reduce((acc, ele) => acc + ele);
+    window.localStorage.setItem("rollHistory", JSON.stringify(rollHistory));
+    window.localStorage.setItem("facesYouFinded", JSON.stringify({ faces, numOfDiceThrows}));
 }
 
 function getRandomNum() {
     return Math.floor(Math.random() * 6) + 1
 }
+let chart;
+function createChart() {
+    const ctx = document.getElementById('myChart');
 
+    chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6'],
+            datasets: [{
+                label: 'Number of appearances of the same face',
+                data: [faces[0], faces[1], faces[2], faces[3], faces[4], faces[5]],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            onClick: (e) => {
+            }
+        }
+    });
+}
+
+function updateChartData(newData) {
+    if (chart) {
+        chart.data.datasets[0].data = newData;
+        chart.update();
+    }
+}
