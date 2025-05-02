@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    background-color: black;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 960px;
+        padding: 0 6rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+        padding: 0 14rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .container {
+        width: 1320px;
+    }
+}
+
+.main-container {
+    padding: 2rem 0;
+}
+
+.main-container img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.main-container h2 {
+    color: white;
+    font-weight: 700;
+    margin: 1rem 0;
+    font-size: 2.5rem;
+}
+
+.main-container p {
+    color: white;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.main-container .btn {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all 0.5s;
+}
+
+.main-container .btn:hover {
+    background-color: orange;
+}
+
+.trailer-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0 0 0 / 95%);
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.trailer-container.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.trailer-container video {
+    width: 70%;
+    border-radius: 10px;
+}
+
+@media (max-width: 992px) {
+    .trailer-container video {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .trailer-container video {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .trailer-container video {
+        width: 98%;
+    }
+}
+
+.trailer-container i {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}

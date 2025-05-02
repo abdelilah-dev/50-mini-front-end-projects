@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #eee;
+}
+
+.game-container {
+    width: fit-content;
+    margin: 5rem auto;
+    padding: 30px;
+    text-align: center;
+}
+
+.game-container .title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.game-container .chosen-container {}
+
+.game-container .chosen-container>span {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.game-container .chosen-container>div {
+    width: fit-content;
+    margin: 1rem auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.game-container .chosen-container>div span {
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 32px;
+}
+
+.game-container .chosen-container .rock {
+    background-color: red;
+}
+
+.game-container .chosen-container .paper {
+    background-color: rgb(0, 128, 255);
+}
+
+.game-container .chosen-container .scissors {
+    background-color: green;
+}
+
+.game-container .chosen-container>p {
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.game-container .total-result {}
+
+.game-container .total-result .user-score {
+    color: rgb(0, 128, 255);
+}
+
+.game-container .total-result .computer-score {
+    color: red;
+}
