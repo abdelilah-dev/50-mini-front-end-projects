@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Project 1",
+        "description": "Rice Roll Simulator",
+        "previewLink": "./project-n1/index.html",
+        "previewImg": "./project-n1/preview.jpg"
+    },
+    {
+        "title": "Project 2",
+        "description": "Video Trailer Popup",
+        "previewLink": "./project-n2/index.html",
+        "previewImg": "./project-n2/preview.jpg"
+    },
+    {
+        "title": "Project 3",
+        "description": "Rock Paper Scissors Game",
+        "previewLink": "./project-n3/index.html",
+        "previewImg": "./project-n3/preview.jpg"
+    },
+    {
+        "title": "Project 4",
+        "description": "Tip Calculator",
+        "previewLink": "./project-n4/index.html",
+        "previewImg": "./project-n4/preview.jpg"
+    }
+]
